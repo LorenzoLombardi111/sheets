@@ -1,0 +1,20 @@
+# freesheet.app
+
+> Free online spreadsheet. No login, no cloud, works in your browser.
+
+freesheet.app is a free browser-based spreadsheet supporting formulas (SUM, AVERAGE, IF,
+and 7 more), CSV import/export, cell formatting, and undo/redo. All data saved to
+localStorage. No account required.
+
+## Key facts
+
+- 100% free, no login
+- Works offline after first visit
+- 10 built-in formulas
+- 26 columns × 100 rows
+- CSV import via file picker or drag-and-drop
+- Data never leaves your device
+
+## Pages
+
+- / — Main app

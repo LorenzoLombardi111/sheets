@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Online Spreadsheet - No Login Required | freesheet.app</title>
+<meta name="description" content="Free online spreadsheet with formulas, CSV import/export &amp; cell formatting. No login, no cloud, works in your browser. freesheet.app">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freesheet.app/">
+<meta property="og:title" content="Free Online Spreadsheet - No Login Required | freesheet.app">
+<meta property="og:description" content="Free online spreadsheet with formulas, CSV import/export &amp; cell formatting. No login, no cloud, works in your browser.">
+<meta property="og:image" content="/og-image.svg">
+<meta property="og:url" content="https://freesheet.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Online Spreadsheet - No Login Required | freesheet.app">
+<meta name="twitter:description" content="Free online spreadsheet with formulas, CSV import/export &amp; cell formatting. No login, no cloud, works in your browser.">
+<meta name="twitter:image" content="/og-image.svg">
+<meta name="theme-color" content="#faf9f6">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "freesheet.app",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://freesheet.app/",
+  "description": "Free online spreadsheet with formula support, CSV import/export, and cell formatting. No login required.",
+  "featureList": ["Formula engine","CSV import/export","Cell formatting","Undo/redo","Offline support","Dark mode"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is freesheet.app really free with no login?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. freesheet.app is completely free and requires no account, email, or login. Open the site and start working immediately. There are no ads inside the app and no hidden paywalls on the core features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does freesheet.app work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. Your spreadsheet data is saved to your browser's localStorage, not a remote server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What formulas does freesheet.app support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "freesheet.app supports 10 built-in formulas: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas are entered with an = sign, support cell references like A1 and ranges like A1:A10, and display errors clearly as #ERR or #DIV/0!."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import my existing Excel or Google Sheets file?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can import any CSV file \u2014 export your Excel or Google Sheets file as CSV first, then drag and drop it onto freesheet.app. Direct .xlsx import is a planned premium feature."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my spreadsheet data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. freesheet.app never sends your data to any server. Everything is processed and stored locally in your browser using localStorage. No analytics, no tracking, no cloud sync."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use freesheet.app on my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. freesheet.app is fully mobile responsive. The grid scrolls horizontally on small screens, and all toolbar buttons meet the 44px minimum touch target size. Editing cells works with the native mobile keyboard."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "freesheet.app",
+    "item": "https://freesheet.app/"
+  }]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;
+--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#9e9b96;
+--accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;
+--destructive:#c0392b;
+--shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04);
+}
+html.dark{
+--bg:#141412;--surface:#1e1c1a;--border:#2e2b27;
+--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#6b6760;
+--accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;
+--shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2);
+}
+html{font-size:15px;line-height:1.6;background:var(--bg);color:var(--text-primary);transition:background 0.15s ease,color 0.15s ease}
+body{font-family:'Lora',serif;margin:0;overflow-x:hidden}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+
+/* App container */
+#app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+
+/* Header */
+#header{height:52px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;gap:8px}
+#brand{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--accent);white-space:nowrap;user-select:none}
+#formula-bar{display:flex;align-items:center;flex:1;gap:8px;min-width:0;margin:0 8px}
+#cell-ref{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--text-secondary);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px 8px;min-width:40px;text-align:center;user-select:none}
+#formula-input{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 12px;color:var(--text-primary);outline:none;min-width:0}
+#formula-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(196,154,42,0.12)}
+#formula-input::placeholder{color:var(--text-muted)}
+#header-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
+
+/* Toolbar buttons */
+.tb-btn{width:28px;height:28px;min-width:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:transparent;border:none;color:var(--text-secondary);cursor:pointer;transition:all 0.15s ease;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:0}
+.tb-btn:hover{background:var(--surface)}
+.tb-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tb-btn.active{background:var(--surface);color:var(--accent)}
+.tb-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Formatting toolbar */
+#formatting-toolbar{height:36px;display:flex;align-items:center;padding:0 12px;gap:4px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;font-family:'DM Sans',sans-serif;font-size:12px}
+.tb-sep{width:1px;height:20px;background:var(--border);margin:0 4px}
+.color-pick{width:28px;height:28px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;position:relative;display:inline-flex;align-items:center;justify-content:center}
+.color-pick:hover{background:var(--bg)}
+.color-pick input[type=color]{position:absolute;width:100%;height:100%;opacity:0;cursor:pointer;top:0;left:0}
+.color-pick svg{width:16px;height:16px;pointer-events:none}
+
+/* Sheet name */
+#sheet-name{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-secondary);background:transparent;border:1px solid transparent;border-radius:6px;padding:2px 8px;cursor:pointer;outline:none;max-width:120px}
+#sheet-name:hover{border-color:var(--border)}
+#sheet-name:focus{border-color:var(--accent);background:var(--bg)}
+
+/* Dark mode toggle */
+.theme-toggle{width:44px;height:24px;border-radius:12px;background:var(--border);border:none;cursor:pointer;position:relative;transition:background 0.15s ease;padding:0;flex-shrink:0}
+.theme-toggle::after{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:var(--bg);top:3px;left:3px;transition:transform 0.15s ease}
+html.dark .theme-toggle{background:var(--accent)}
+html.dark .theme-toggle::after{transform:translateX(20px)}
+.theme-toggle .t-icon{position:absolute;top:4px;font-size:12px;line-height:16px;transition:opacity 0.15s ease;pointer-events:none}
+.theme-toggle .t-sun{left:5px;opacity:1}
+.theme-toggle .t-moon{right:5px;opacity:0}
+html.dark .theme-toggle .t-sun{opacity:0}
+html.dark .theme-toggle .t-moon{opacity:1}
+
+/* Grid area */
+#grid-wrapper{flex:1;overflow:auto;position:relative}
+#grid{border-collapse:collapse;table-layout:fixed}
+#grid th,#grid td{border:1px solid var(--border);padding:0;font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#grid thead th{position:sticky;top:0;z-index:3;background:var(--surface);font-size:12px;font-weight:600;text-align:center;height:28px;min-width:100px;user-select:none}
+#grid thead th:first-child{position:sticky;left:0;z-index:4;width:40px;min-width:40px;max-width:40px}
+#grid tbody td:first-child{position:sticky;left:0;z-index:2;background:var(--surface);width:40px;min-width:40px;max-width:40px;font-size:12px;color:var(--text-muted);text-align:right;padding:0 8px 0 0;user-select:none}
+#grid tbody td.cell{height:28px;min-width:100px;font-size:13px;padding:4px 8px;background:var(--bg);cursor:cell;position:relative}
+#grid tbody td.cell.selected{outline:2px solid var(--accent);outline-offset:-2px;z-index:1}
+#grid tbody td.cell.in-range{background:rgba(196,154,42,0.08)}
+#grid tbody td.cell.editing{outline:2px solid var(--accent);outline-offset:-2px;z-index:1}
+.cell-editor{position:absolute;top:0;left:0;width:100%;height:100%;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:13px;padding:4px 8px;background:var(--bg);color:var(--text-primary);z-index:5}
+
+/* Column resize handle */
+.col-resize{position:absolute;right:-3px;top:0;width:6px;height:100%;cursor:col-resize;z-index:5}
+
+/* Status bar */
+#status-bar{height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:var(--surface);border-top:1px solid var(--border);flex-shrink:0;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);user-select:none}
+#status-left{display:flex;gap:12px}
+#status-right{display:flex;gap:12px;opacity:0.7}
+
+/* Attribution badge */
+#suite-badge{position:fixed;bottom:36px;right:12px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;color:var(--text-muted);z-index:10;user-select:none;pointer-events:none}
+
+/* Upgrade prompt */
+#upgrade-prompt{border-top:1px solid var(--border);background:var(--bg);overflow:hidden}
+#upgrade-toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);user-select:none}
+#upgrade-toggle:hover{background:var(--surface)}
+#upgrade-toggle svg{width:16px;height:16px;transition:transform 0.15s ease;stroke:currentColor;fill:none;stroke-width:2}
+#upgrade-prompt.open #upgrade-toggle svg{transform:rotate(180deg)}
+#upgrade-list{display:none;padding:8px 16px 16px}
+#upgrade-prompt.open #upgrade-list{display:block}
+.upgrade-item{margin-bottom:12px}
+.upgrade-item-title{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text-secondary)}
+.upgrade-item-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);margin:2px 0 4px}
+.upgrade-item-cta{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--accent);cursor:pointer}
+
+/* Drag and drop overlay */
+#drop-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(196,154,42,0.08);border:3px dashed var(--accent);z-index:100;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--accent);font-weight:600}
+#drop-overlay.visible{display:flex}
+
+/* Hidden file input */
+#csv-file-input{display:none}
+
+/* SEO content section */
+.seo-content{max-width:720px;margin:0 auto;padding:64px 24px;font-family:'Lora',serif;color:var(--text-primary);line-height:1.6}
+.seo-content h1{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;margin-bottom:24px;color:var(--text-primary)}
+.seo-content h2{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:600;margin:32px 0 16px;color:var(--text-primary)}
+.seo-content p{margin-bottom:16px;font-size:15px}
+.seo-content details{margin-bottom:12px;border:1px solid var(--border);border-radius:10px;padding:0}
+.seo-content summary{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 16px;cursor:pointer;color:var(--text-primary);list-style:none}
+.seo-content summary::-webkit-details-marker{display:none}
+.seo-content summary::before{content:'+ ';font-weight:700;color:var(--accent)}
+.seo-content details[open] summary::before{content:'\2212  '}
+.seo-content details p{padding:0 16px 12px;margin:0;font-size:14px;color:var(--text-secondary)}
+.seo-footer{max-width:720px;margin:0 auto;padding:24px;border-top:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);text-align:center}
+
+/* Mobile responsive */
+@media(max-width:768px){
+  #header{padding:0 8px;gap:4px}
+  #brand{font-size:13px}
+  #formula-bar{margin:0 4px}
+  #cell-ref{min-width:32px;padding:2px 4px;font-size:11px}
+  #formula-input{padding:4px 8px;font-size:12px}
+  .tb-btn{width:44px;height:44px;min-width:44px}
+  #formatting-toolbar .tb-btn{width:44px;height:36px;min-width:44px}
+  .color-pick{width:44px;height:36px}
+  #suite-badge span.long{display:none}
+  #suite-badge span.short{display:inline}
+}
+@media(min-width:769px){
+  #suite-badge span.short{display:none}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="header">
+    <div id="brand">freesheet.app</div>
+    <input type="text" id="sheet-name" value="Untitled Spreadsheet" spellcheck="false" aria-label="Sheet name">
+    <div id="formula-bar">
+      <span id="cell-ref">A1</span>
+      <input type="text" id="formula-input" placeholder="Enter value or formula (=SUM, =IF...)" spellcheck="false" aria-label="Formula bar">
+    </div>
+    <div id="header-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <span class="t-icon t-sun">&#9728;</span>
+        <span class="t-icon t-moon">&#9790;</span>
+      </button>
+    </div>
+  </header>
+  <nav id="formatting-toolbar">
+    <button class="tb-btn" id="btn-bold" title="Bold (Ctrl+B)" aria-label="Bold"><svg viewBox="0 0 24 24"><path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/><path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/></svg></button>
+    <button class="tb-btn" id="btn-italic" title="Italic (Ctrl+I)" aria-label="Italic"><svg viewBox="0 0 24 24"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg></button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btn-align-left" title="Align Left" aria-label="Align left"><svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="17" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg></button>
+    <button class="tb-btn" id="btn-align-center" title="Align Center" aria-label="Align center"><svg viewBox="0 0 24 24"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="18" y1="14" x2="6" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg></button>
+    <button class="tb-btn" id="btn-align-right" title="Align Right" aria-label="Align right"><svg viewBox="0 0 24 24"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="7" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg></button>
+    <div class="tb-sep"></div>
+    <div class="color-pick" title="Text Color">
+      <svg viewBox="0 0 24 24" stroke="var(--text-secondary)" fill="none" stroke-width="2"><path d="M4 20h16"/><path d="M9.5 4h5l4 12H5.5z" fill="none"/></svg>
+      <input type="color" id="text-color-picker" value="#1a1917" aria-label="Text color">
+    </div>
+    <div class="color-pick" title="Cell Background Color">
+      <svg viewBox="0 0 24 24" stroke="var(--text-secondary)" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+      <input type="color" id="bg-color-picker" value="#faf9f6" aria-label="Cell background color">
+    </div>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btn-import" title="Import CSV" aria-label="Import CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+    <button class="tb-btn" id="btn-export" title="Export CSV" aria-label="Export CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btn-undo" title="Undo (Ctrl+Z)" aria-label="Undo"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+    <button class="tb-btn" id="btn-redo" title="Redo (Ctrl+Y)" aria-label="Redo"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></svg></button>
+  </nav>
+  <main id="grid-wrapper">
+    <table id="grid"></table>
+  </main>
+  <div id="upgrade-prompt">
+    <div id="upgrade-toggle">
+      <span>Unlock more features</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div id="upgrade-list">
+      <div class="upgrade-item">
+        <div class="upgrade-item-title">&#128274; Multiple Sheets</div>
+        <div class="upgrade-item-desc">Organize your data across multiple tabs in one file.</div>
+        <div class="upgrade-item-cta">Unlock with freesuite.app &middot; $2.88/mo</div>
+      </div>
+      <div class="upgrade-item">
+        <div class="upgrade-item-title">&#128274; Charts &amp; Graphs</div>
+        <div class="upgrade-item-desc">Visualize your data with bar, line, and pie charts.</div>
+        <div class="upgrade-item-cta">Unlock with freesuite.app &middot; $2.88/mo</div>
+      </div>
+      <div class="upgrade-item">
+        <div class="upgrade-item-title">&#128274; Advanced Formulas</div>
+        <div class="upgrade-item-desc">VLOOKUP, SUMIF, COUNTIF, and 50+ more functions.</div>
+        <div class="upgrade-item-cta">Unlock with freesuite.app &middot; $2.88/mo</div>
+      </div>
+      <div class="upgrade-item">
+        <div class="upgrade-item-title">&#128274; XLSX Export</div>
+        <div class="upgrade-item-desc">Download your spreadsheet as a real .xlsx file.</div>
+        <div class="upgrade-item-cta">Unlock with freesuite.app &middot; $2.88/mo</div>
+      </div>
+    </div>
+  </div>
+  <div id="status-bar">
+    <div id="status-left"><span id="status-cell">A1</span><span id="status-sum">SUM: 0</span><span id="status-avg">AVG: 0</span><span id="status-count">COUNT: 0</span></div>
+    <div id="status-right"><span>Enter=down</span><span>Tab=next</span><span>Ctrl+Z=undo</span><span>F2=edit</span></div>
+  </div>
+</div>
+<div id="suite-badge"><span class="long">by freesuite.app</span><span class="short">freesuite.app</span></div>
+<div id="drop-overlay">Drop CSV file here</div>
+<input type="file" id="csv-file-input" accept=".csv,text/csv">
+
+<section class="seo-content">
+<article>
+<h1>Free Online Spreadsheet &mdash; No Login Required</h1>
+<p>freesheet.app is a free online spreadsheet that works entirely in your browser with no login, no account, and no cloud storage required. It supports formulas like SUM, AVERAGE, IF, and more, plus CSV import and export, cell formatting, and undo/redo &mdash; everything you need for everyday spreadsheet tasks. freesheet.app loads in under 200ms and saves your work automatically to your browser's localStorage, so your data is always there when you come back. Whether you need to quickly tally a budget, track a personal project, or clean up CSV data, freesheet.app gives you a full spreadsheet experience without asking for your email, without loading ads, and without sending your data to anyone's servers. Open the page and start typing &mdash; your spreadsheet is ready.</p>
+
+<h2>What features does freesheet.app offer?</h2>
+<p>freesheet.app includes a built-in formula engine with 10 functions: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas start with an equals sign and support cell references like A1 or ranges like A1:A10. Circular references are detected and displayed as #CIRC, while other errors appear as #ERR or #DIV/0! so you can debug formulas easily.</p>
+<p>CSV import and export are supported out of the box. You can import a CSV file using the file picker button in the toolbar, or simply drag and drop a .csv file directly onto the grid. Exporting your spreadsheet as a CSV file is a single click away.</p>
+<p>Cell formatting includes bold, italic, text color, background color, and text alignment (left, center, or right). Formatting is applied per cell and persists when you save your spreadsheet.</p>
+<p>The grid provides 26 columns (A through Z) and 100 rows, with resizable column widths that you can adjust by dragging column header borders. The header row stays frozen as you scroll through your data.</p>
+<p>freesheet.app supports undo and redo with up to 50 steps of history. Press Ctrl+Z to undo and Ctrl+Y to redo, or use the toolbar buttons.</p>
+<p>Multi-cell selection works with click-and-drag or Shift+click. When multiple cells are selected, the status bar at the bottom displays live SUM, AVERAGE, and COUNT values for the selected range.</p>
+
+<h2>How does this free online spreadsheet work?</h2>
+<p>Getting started with freesheet.app takes seconds. Open the page in any modern browser and you will see a full spreadsheet grid ready for input. There is no account creation, no setup wizard, and no loading screen. Click any cell and start typing numbers, text, or formulas.</p>
+<p>If you already have data in another application, export it as a CSV file and import it into freesheet.app. You can use the import button in the toolbar or drag the CSV file directly onto the grid. Your data will populate the cells instantly.</p>
+<p>When you are finished working, your spreadsheet is already saved. freesheet.app automatically stores all cell data, formatting, and preferences in your browser's localStorage. You can also export your work as a CSV file to share with others or open in another application.</p>
+
+<h2>Why is freesheet.app better than other free spreadsheet apps?</h2>
+<p>Google Sheets and Microsoft Excel Online are powerful tools, but they require you to create an account and store your data on their servers. For quick, private spreadsheet tasks, that overhead is unnecessary. freesheet.app gives you a functional spreadsheet in under 200ms with zero friction.</p>
+<p>Many free spreadsheet alternatives are loaded with ads, pop-ups, and tracking scripts that slow down the experience and compromise your privacy. freesheet.app contains no ads, no analytics, and no third-party scripts. The entire application is a single HTML file with inline CSS and vanilla JavaScript.</p>
+<p>freesheet.app works offline after your first visit. A service worker caches all resources so you can use the spreadsheet on a plane, on the train, or anywhere without an internet connection. Your data never leaves your device.</p>
+<p>For everyday tasks like budgeting, project tracking, data cleanup, and quick calculations, freesheet.app provides exactly what you need without the complexity of a full office suite. It is fast, private, and always available.</p>
+
+<h2>Is freesheet.app private and safe to use?</h2>
+<p>freesheet.app stores all data exclusively in your browser's localStorage. No data is transmitted to any server at any time. There is no backend, no database, no API calls, and no cloud sync. Your spreadsheet data stays on your device and is never accessible to anyone else.</p>
+<p>freesheet.app does not use cookies, analytics, tracking pixels, or any form of user monitoring. There are no third-party scripts loaded on the page. The application runs entirely in your browser and can function fully offline.</p>
+<p>Because your data is stored in localStorage, it persists between sessions but is tied to your browser. Clearing your browser data will remove your spreadsheet. For important work, use the CSV export feature to save a backup file.</p>
+
+<h2>Frequently Asked Questions</h2>
+<details>
+<summary>Is freesheet.app really free with no login?</summary>
+<p>Yes. freesheet.app is completely free and requires no account, email, or login. Open the site and start working immediately. There are no ads inside the app and no hidden paywalls on the core features.</p>
+</details>
+<details>
+<summary>Does freesheet.app work offline?</summary>
+<p>Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. Your spreadsheet data is saved to your browser's localStorage, not a remote server.</p>
+</details>
+<details>
+<summary>What formulas does freesheet.app support?</summary>
+<p>freesheet.app supports 10 built-in formulas: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas are entered with an = sign, support cell references like A1 and ranges like A1:A10, and display errors clearly as #ERR or #DIV/0!.</p>
+</details>
+<details>
+<summary>Can I import my existing Excel or Google Sheets file?</summary>
+<p>You can import any CSV file &mdash; export your Excel or Google Sheets file as CSV first, then drag and drop it onto freesheet.app. Direct .xlsx import is a planned premium feature.</p>
+</details>
+<details>
+<summary>Is my spreadsheet data private?</summary>
+<p>Yes. freesheet.app never sends your data to any server. Everything is processed and stored locally in your browser using localStorage. No analytics, no tracking, no cloud sync.</p>
+</details>
+<details>
+<summary>Can I use freesheet.app on my phone?</summary>
+<p>Yes. freesheet.app is fully mobile responsive. The grid scrolls horizontally on small screens, and all toolbar buttons meet the 44px minimum touch target size. Editing cells works with the native mobile keyboard.</p>
+</details>
+</article>
+</section>
+<footer class="seo-footer">
+<div>&copy; freesheet.app</div>
+<div class="more-tools-placeholder" data-suite="freetools"></div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+// Constants
+const COLS = 26;
+const ROWS = 100;
+const MAX_UNDO = 50;
+const LS_DATA = 'freesheet_data';
+const LS_FORMAT = 'freesheet_format';
+const LS_COLW = 'freesheet_colwidths';
+const LS_NAME = 'freesheet_name';
+const LS_THEME = 'suite_theme';
+
+// State
+let data = []; // data[row][col] = raw value string
+let formats = []; // formats[row][col] = {bold,italic,color,bg,align}
+let colWidths = [];
+let selectedCell = {r:0,c:0};
+let selectionStart = null;
+let selectionEnd = null;
+let isSelecting = false;
+let editing = false;
+let editingCell = null;
+let undoStack = [];
+let redoStack = [];
+let clipboard = null;
+
+// DOM refs
+const grid = document.getElementById('grid');
+const gridWrapper = document.getElementById('grid-wrapper');
+const cellRefEl = document.getElementById('cell-ref');
+const formulaInput = document.getElementById('formula-input');
+const statusCell = document.getElementById('status-cell');
+const statusSum = document.getElementById('status-sum');
+const statusAvg = document.getElementById('status-avg');
+const statusCount = document.getElementById('status-count');
+const sheetNameEl = document.getElementById('sheet-name');
+const dropOverlay = document.getElementById('drop-overlay');
+const csvFileInput = document.getElementById('csv-file-input');
+
+// ===== INIT =====
+function init(){
+  initTheme();
+  loadData();
+  buildGrid();
+  loadSheetName();
+  selectCell(0,0);
+  bindEvents();
+  registerSW();
+}
+
+// ===== THEME =====
+function initTheme(){
+  const saved = localStorage.getItem(LS_THEME);
+  if(saved==='dark' || (!saved && window.matchMedia('(prefers-color-scheme:dark)').matches)){
+    document.documentElement.classList.add('dark');
+  }
+}
+document.getElementById('theme-toggle').addEventListener('click',function(){
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem(LS_THEME, document.documentElement.classList.contains('dark')?'dark':'light');
+});
+
+// ===== DATA =====
+function emptyData(){
+  data=[];formats=[];
+  for(let r=0;r<ROWS;r++){
+    data[r]=[];formats[r]=[];
+    for(let c=0;c<COLS;c++){
+      data[r][c]='';
+      formats[r][c]={bold:false,italic:false,color:'',bg:'',align:''};
+    }
+  }
+  colWidths=Array(COLS).fill(100);
+}
+
+function loadData(){
+  emptyData();
+  try{
+    const d=JSON.parse(localStorage.getItem(LS_DATA));
+    if(d&&Array.isArray(d)){
+      for(let r=0;r<Math.min(d.length,ROWS);r++){
+        if(!d[r])continue;
+        for(let c=0;c<Math.min(d[r].length,COLS);c++){
+          if(d[r][c]!=null) data[r][c]=String(d[r][c]);
+        }
+      }
+    }
+  }catch(e){}
+  try{
+    const f=JSON.parse(localStorage.getItem(LS_FORMAT));
+    if(f&&Array.isArray(f)){
+      for(let r=0;r<Math.min(f.length,ROWS);r++){
+        if(!f[r])continue;
+        for(let c=0;c<Math.min(f[r].length,COLS);c++){
+          if(f[r][c]) Object.assign(formats[r][c],f[r][c]);
+        }
+      }
+    }
+  }catch(e){}
+  try{
+    const w=JSON.parse(localStorage.getItem(LS_COLW));
+    if(w&&Array.isArray(w)){
+      for(let c=0;c<Math.min(w.length,COLS);c++){
+        if(w[c])colWidths[c]=w[c];
+      }
+    }
+  }catch(e){}
+}
+
+function saveData(){
+  // Trim trailing empty rows/cols for storage
+  localStorage.setItem(LS_DATA,JSON.stringify(data));
+  localStorage.setItem(LS_FORMAT,JSON.stringify(formats));
+  localStorage.setItem(LS_COLW,JSON.stringify(colWidths));
+}
+
+function loadSheetName(){
+  const n=localStorage.getItem(LS_NAME);
+  if(n)sheetNameEl.value=n;
+}
+sheetNameEl.addEventListener('change',function(){
+  localStorage.setItem(LS_NAME,sheetNameEl.value);
+});
+
+// ===== FORMULA ENGINE =====
+function colLabel(c){return String.fromCharCode(65+c)}
+function cellId(r,c){return colLabel(c)+(r+1)}
+
+function parseRef(ref){
+  const m=ref.match(/^([A-Z])(\d+)$/);
+  if(!m)return null;
+  return {r:parseInt(m[2])-1, c:m[1].charCodeAt(0)-65};
+}
+
+function expandRange(rangeStr){
+  const parts=rangeStr.split(':');
+  if(parts.length!==2)return null;
+  const s=parseRef(parts[0]),e=parseRef(parts[1]);
+  if(!s||!e)return null;
+  const cells=[];
+  for(let r=Math.min(s.r,e.r);r<=Math.max(s.r,e.r);r++){
+    for(let c=Math.min(s.c,e.c);c<=Math.max(s.c,e.c);c++){
+      cells.push({r,c});
+    }
+  }
+  return cells;
+}
+
+function evalCell(r,c,visited){
+  if(!visited)visited=new Set();
+  const key=r+','+c;
+  if(visited.has(key))return '#CIRC';
+  visited.add(key);
+  const raw=data[r]&&data[r][c]!=null?data[r][c]:'';
+  if(raw===''||raw[0]!=='=')return raw;
+  try{
+    return evalFormula(raw.substring(1),new Set(visited));
+  }catch(e){
+    return '#ERR';
+  }
+}
+
+function evalFormula(expr,visited){
+  expr=expr.trim();
+  // Try function call
+  const funcMatch=expr.match(/^([A-Z]+)\((.+)\)$/);
+  if(funcMatch){
+    const fn=funcMatch[1];
+    const argsStr=funcMatch[2];
+    return evalFunction(fn,argsStr,visited);
+  }
+  // Try cell reference
+  const refMatch=expr.match(/^([A-Z]\d+)$/);
+  if(refMatch){
+    const ref=parseRef(refMatch[1]);
+    if(!ref||ref.r<0||ref.r>=ROWS||ref.c<0||ref.c>=COLS)return '#ERR';
+    const v=evalCell(ref.r,ref.c,visited);
+    return v;
+  }
+  // Try arithmetic expression
+  return evalExpression(expr,visited);
+}
+
+function evalExpression(expr,visited){
+  expr=expr.trim();
+  // Handle parentheses
+  if(expr.startsWith('(')&&findClosingParen(expr,0)===expr.length-1){
+    return evalExpression(expr.substring(1,expr.length-1),visited);
+  }
+  // Split by + - (lowest precedence), right to left
+  let depth=0;
+  for(let i=expr.length-1;i>=0;i--){
+    const ch=expr[i];
+    if(ch===')')depth++;
+    else if(ch==='(')depth--;
+    if(depth===0&&(ch==='+'||ch==='-')&&i>0){
+      const left=evalExpression(expr.substring(0,i),visited);
+      const right=evalExpression(expr.substring(i+1),visited);
+      const l=toNumber(left),r2=toNumber(right);
+      if(isNaN(l)||isNaN(r2))return '#ERR';
+      return ch==='+'?l+r2:l-r2;
+    }
+  }
+  // Split by * /
+  depth=0;
+  for(let i=expr.length-1;i>=0;i--){
+    const ch=expr[i];
+    if(ch===')')depth++;
+    else if(ch==='(')depth--;
+    if(depth===0&&(ch==='*'||ch==='/')){
+      const left=evalExpression(expr.substring(0,i),visited);
+      const right=evalExpression(expr.substring(i+1),visited);
+      const l=toNumber(left),r2=toNumber(right);
+      if(isNaN(l)||isNaN(r2))return '#ERR';
+      if(ch==='/'&&r2===0)return '#DIV/0!';
+      return ch==='*'?l*r2:l/r2;
+    }
+  }
+  // Try negative number
+  if(expr.startsWith('-')){
+    const v=evalExpression(expr.substring(1),visited);
+    const n=toNumber(v);
+    if(isNaN(n))return '#ERR';
+    return -n;
+  }
+  // Try cell reference
+  const ref=parseRef(expr);
+  if(ref){
+    if(ref.r<0||ref.r>=ROWS||ref.c<0||ref.c>=COLS)return '#ERR';
+    return evalCell(ref.r,ref.c,visited);
+  }
+  // Try number
+  const num=parseFloat(expr);
+  if(!isNaN(num))return num;
+  // Try string
+  if((expr.startsWith('"')&&expr.endsWith('"'))||(expr.startsWith("'")&&expr.endsWith("'"))){
+    return expr.substring(1,expr.length-1);
+  }
+  return '#ERR';
+}
+
+function findClosingParen(s,start){
+  let d=0;
+  for(let i=start;i<s.length;i++){
+    if(s[i]==='(')d++;
+    else if(s[i]===')'){d--;if(d===0)return i;}
+  }
+  return -1;
+}
+
+function splitArgs(argsStr){
+  const args=[];
+  let depth=0,current='',inStr=false,strCh='';
+  for(let i=0;i<argsStr.length;i++){
+    const ch=argsStr[i];
+    if(inStr){
+      current+=ch;
+      if(ch===strCh)inStr=false;
+      continue;
+    }
+    if(ch==='"'||ch==="'"){inStr=true;strCh=ch;current+=ch;continue;}
+    if(ch==='(')depth++;
+    if(ch===')')depth--;
+    if(ch===','&&depth===0){args.push(current.trim());current='';continue;}
+    current+=ch;
+  }
+  if(current.trim())args.push(current.trim());
+  return args;
+}
+
+function getValues(argsStr,visited){
+  const args=splitArgs(argsStr);
+  const vals=[];
+  for(const arg of args){
+    if(arg.includes(':')){
+      const cells=expandRange(arg);
+      if(!cells)throw new Error('bad range');
+      for(const c of cells){
+        const v=evalCell(c.r,c.c,new Set(visited));
+        vals.push(v);
+      }
+    }else{
+      vals.push(evalFormula(arg,new Set(visited)));
+    }
+  }
+  return vals;
+}
+
+function getNumbers(argsStr,visited){
+  return getValues(argsStr,visited).map(v=>toNumber(v)).filter(v=>!isNaN(v));
+}
+
+function toNumber(v){
+  if(v===''||v===null||v===undefined)return NaN;
+  if(typeof v==='number')return v;
+  if(typeof v==='string'){
+    if(v.startsWith('#'))return NaN;
+    const n=parseFloat(v);
+    return isNaN(n)?NaN:n;
+  }
+  return NaN;
+}
+
+function evalFunction(fn,argsStr,visited){
+  switch(fn){
+    case 'SUM':{
+      const nums=getNumbers(argsStr,visited);
+      return nums.length?nums.reduce((a,b)=>a+b,0):'';
+    }
+    case 'AVERAGE':{
+      const nums=getNumbers(argsStr,visited);
+      return nums.length?nums.reduce((a,b)=>a+b,0)/nums.length:'';
+    }
+    case 'MIN':{
+      const nums=getNumbers(argsStr,visited);
+      return nums.length?Math.min(...nums):'';
+    }
+    case 'MAX':{
+      const nums=getNumbers(argsStr,visited);
+      return nums.length?Math.max(...nums):'';
+    }
+    case 'COUNT':{
+      const vals=getValues(argsStr,visited);
+      return vals.filter(v=>v!==''&&!isNaN(toNumber(v))).length;
+    }
+    case 'IF':{
+      const args=splitArgs(argsStr);
+      if(args.length<2)return '#ERR';
+      const cond=evalFormula(args[0],new Set(visited));
+      const condNum=toNumber(cond);
+      const isTrue=typeof cond==='string'?(cond!==''&&cond!=='0'&&!cond.startsWith('#')):!!condNum;
+      if(isTrue){
+        return evalFormula(args[1],new Set(visited));
+      }else{
+        return args[2]?evalFormula(args[2],new Set(visited)):'';
+      }
+    }
+    case 'ROUND':{
+      const args=splitArgs(argsStr);
+      const val=toNumber(evalFormula(args[0],new Set(visited)));
+      const dec=args[1]?toNumber(evalFormula(args[1],new Set(visited))):0;
+      if(isNaN(val))return '#ERR';
+      const d=isNaN(dec)?0:Math.round(dec);
+      return Math.round(val*Math.pow(10,d))/Math.pow(10,d);
+    }
+    case 'ABS':{
+      const args=splitArgs(argsStr);
+      const val=toNumber(evalFormula(args[0],new Set(visited)));
+      if(isNaN(val))return '#ERR';
+      return Math.abs(val);
+    }
+    case 'CONCAT':{
+      const vals=getValues(argsStr,visited);
+      return vals.map(v=>String(v===undefined||v===null?'':v)).join('');
+    }
+    case 'TODAY':{
+      const d=new Date();
+      return (d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear();
+    }
+    default:return '#ERR';
+  }
+}
+
+function getCellDisplay(r,c){
+  const raw=data[r][c];
+  if(raw==='')return '';
+  if(raw[0]==='='){
+    const result=evalCell(r,c);
+    if(result===''||result===null||result===undefined)return '';
+    if(typeof result==='number'){
+      return Number.isInteger(result)?result.toString():parseFloat(result.toFixed(10)).toString();
+    }
+    return String(result);
+  }
+  return raw;
+}
+
+// ===== BUILD GRID =====
+function buildGrid(){
+  let html='<thead><tr><th></th>';
+  for(let c=0;c<COLS;c++){
+    html+='<th style="width:'+colWidths[c]+'px;min-width:'+colWidths[c]+'px;position:relative">'+colLabel(c)+'<div class="col-resize" data-col="'+c+'"></div></th>';
+  }
+  html+='</tr></thead><tbody>';
+  for(let r=0;r<ROWS;r++){
+    html+='<tr><td>'+(r+1)+'</td>';
+    for(let c=0;c<COLS;c++){
+      const fmt=formats[r][c];
+      let style='';
+      if(fmt.bold)style+='font-weight:700;';
+      if(fmt.italic)style+='font-style:italic;';
+      if(fmt.color)style+='color:'+fmt.color+';';
+      if(fmt.bg)style+='background:'+fmt.bg+';';
+      if(fmt.align)style+='text-align:'+fmt.align+';';
+      const display=getCellDisplay(r,c);
+      html+='<td class="cell" data-r="'+r+'" data-c="'+c+'" style="'+style+'">'+escapeHtml(display)+'</td>';
+    }
+    html+='</tr>';
+  }
+  html+='</tbody>';
+  grid.innerHTML=html;
+}
+
+function refreshCell(r,c){
+  const td=getCellTd(r,c);
+  if(!td)return;
+  const fmt=formats[r][c];
+  td.style.fontWeight=fmt.bold?'700':'';
+  td.style.fontStyle=fmt.italic?'italic':'';
+  td.style.color=fmt.color||'';
+  td.style.background=fmt.bg||'';
+  td.style.textAlign=fmt.align||'';
+  if(!(editing&&editingCell&&editingCell.r===r&&editingCell.c===c)){
+    td.textContent=getCellDisplay(r,c);
+  }
+}
+
+function refreshAllCells(){
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      if(data[r][c]!=='')refreshCell(r,c);
+    }
+  }
+}
+
+function getCellTd(r,c){
+  const row=grid.tBodies[0]&&grid.tBodies[0].rows[r];
+  return row?row.cells[c+1]:null;
+}
+
+function escapeHtml(s){
+  if(typeof s!=='string')s=String(s??'');
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ===== SELECTION =====
+function selectCell(r,c,extend){
+  r=Math.max(0,Math.min(ROWS-1,r));
+  c=Math.max(0,Math.min(COLS-1,c));
+  if(editing)finishEditing();
+  clearSelectionHighlight();
+  if(extend&&selectionStart){
+    selectionEnd={r,c};
+  }else{
+    selectedCell={r,c};
+    selectionStart={r,c};
+    selectionEnd={r,c};
+  }
+  applySelectionHighlight();
+  const td=getCellTd(selectedCell.r,selectedCell.c);
+  if(td){
+    td.classList.add('selected');
+    scrollIntoView(td);
+  }
+  cellRefEl.textContent=cellId(selectedCell.r,selectedCell.c);
+  formulaInput.value=data[selectedCell.r][selectedCell.c];
+  updateStatus();
+  updateFormatButtons();
+}
+
+function clearSelectionHighlight(){
+  const cells=grid.querySelectorAll('.cell.selected,.cell.in-range');
+  cells.forEach(c=>{c.classList.remove('selected','in-range')});
+}
+
+function applySelectionHighlight(){
+  if(!selectionStart||!selectionEnd)return;
+  const sr=Math.min(selectionStart.r,selectionEnd.r);
+  const er=Math.max(selectionStart.r,selectionEnd.r);
+  const sc=Math.min(selectionStart.c,selectionEnd.c);
+  const ec=Math.max(selectionStart.c,selectionEnd.c);
+  for(let r=sr;r<=er;r++){
+    for(let c=sc;c<=ec;c++){
+      const td=getCellTd(r,c);
+      if(td){
+        if(r===selectedCell.r&&c===selectedCell.c)td.classList.add('selected');
+        else td.classList.add('in-range');
+      }
+    }
+  }
+}
+
+function getSelectedRange(){
+  if(!selectionStart||!selectionEnd)return [{r:selectedCell.r,c:selectedCell.c}];
+  const sr=Math.min(selectionStart.r,selectionEnd.r);
+  const er=Math.max(selectionStart.r,selectionEnd.r);
+  const sc=Math.min(selectionStart.c,selectionEnd.c);
+  const ec=Math.max(selectionStart.c,selectionEnd.c);
+  const cells=[];
+  for(let r=sr;r<=er;r++){
+    for(let c=sc;c<=ec;c++){
+      cells.push({r,c});
+    }
+  }
+  return cells;
+}
+
+function scrollIntoView(td){
+  const wr=gridWrapper.getBoundingClientRect();
+  const tr=td.getBoundingClientRect();
+  if(tr.left<wr.left+40)gridWrapper.scrollLeft-=(wr.left+40-tr.left);
+  if(tr.right>wr.right)gridWrapper.scrollLeft+=(tr.right-wr.right);
+  if(tr.top<wr.top+28)gridWrapper.scrollTop-=(wr.top+28-tr.top);
+  if(tr.bottom>wr.bottom)gridWrapper.scrollTop+=(tr.bottom-wr.bottom);
+}
+
+function updateStatus(){
+  statusCell.textContent=cellId(selectedCell.r,selectedCell.c);
+  const cells=getSelectedRange();
+  let sum=0,count=0,numCount=0;
+  for(const cell of cells){
+    const display=getCellDisplay(cell.r,cell.c);
+    if(display==='')continue;
+    count++;
+    const n=parseFloat(display);
+    if(!isNaN(n)){sum+=n;numCount++;}
+  }
+  statusSum.textContent='SUM: '+(numCount?parseFloat(sum.toFixed(10)):0);
+  statusAvg.textContent='AVG: '+(numCount?parseFloat((sum/numCount).toFixed(10)):0);
+  statusCount.textContent='COUNT: '+count;
+}
+
+function updateFormatButtons(){
+  const fmt=formats[selectedCell.r][selectedCell.c];
+  document.getElementById('btn-bold').classList.toggle('active',fmt.bold);
+  document.getElementById('btn-italic').classList.toggle('active',fmt.italic);
+  document.getElementById('btn-align-left').classList.toggle('active',fmt.align==='left');
+  document.getElementById('btn-align-center').classList.toggle('active',fmt.align==='center');
+  document.getElementById('btn-align-right').classList.toggle('active',fmt.align==='right');
+}
+
+// ===== EDITING =====
+function startEditing(r,c,initialValue){
+  if(editing)finishEditing();
+  editing=true;
+  editingCell={r,c};
+  const td=getCellTd(r,c);
+  if(!td)return;
+  td.classList.add('editing');
+  const input=document.createElement('input');
+  input.type='text';
+  input.className='cell-editor';
+  input.value=initialValue!==undefined?initialValue:data[r][c];
+  td.textContent='';
+  td.appendChild(input);
+  input.focus();
+  if(initialValue===undefined)input.select();
+  formulaInput.value=input.value;
+  input.addEventListener('input',function(){
+    formulaInput.value=input.value;
+  });
+}
+
+function finishEditing(cancel){
+  if(!editing||!editingCell)return;
+  const td=getCellTd(editingCell.r,editingCell.c);
+  const input=td&&td.querySelector('.cell-editor');
+  const r=editingCell.r,c=editingCell.c;
+  if(!cancel&&input){
+    const newVal=input.value;
+    const oldVal=data[r][c];
+    if(newVal!==oldVal){
+      pushUndo();
+      data[r][c]=newVal;
+      saveData();
+    }
+  }
+  editing=false;
+  editingCell=null;
+  if(td){
+    td.classList.remove('editing');
+    const inp=td.querySelector('.cell-editor');
+    if(inp)inp.remove();
+  }
+  refreshCell(r,c);
+  refreshAllCells(); // refresh dependent cells
+}
+
+// ===== UNDO/REDO =====
+function snapshot(){
+  return {
+    data:data.map(r=>r.slice()),
+    formats:formats.map(r=>r.map(f=>({...f})))
+  };
+}
+
+function restore(snap){
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      data[r][c]=snap.data[r]?snap.data[r][c]||'':'';
+      if(snap.formats[r]&&snap.formats[r][c]){
+        Object.assign(formats[r][c],snap.formats[r][c]);
+      }
+    }
+  }
+  saveData();
+  buildGrid();
+  selectCell(selectedCell.r,selectedCell.c);
+}
+
+function pushUndo(){
+  undoStack.push(snapshot());
+  if(undoStack.length>MAX_UNDO)undoStack.shift();
+  redoStack=[];
+}
+
+function undo(){
+  if(!undoStack.length)return;
+  redoStack.push(snapshot());
+  restore(undoStack.pop());
+}
+
+function redo(){
+  if(!redoStack.length)return;
+  undoStack.push(snapshot());
+  restore(redoStack.pop());
+}
+
+// ===== COPY/PASTE =====
+function copySelection(){
+  const range=getSelectedRange();
+  const sr=Math.min(...range.map(c=>c.r));
+  const er=Math.max(...range.map(c=>c.r));
+  const sc=Math.min(...range.map(c=>c.c));
+  const ec=Math.max(...range.map(c=>c.c));
+  clipboard={sr,sc,data:[],formats:[]};
+  let text='';
+  for(let r=sr;r<=er;r++){
+    clipboard.data.push([]);
+    clipboard.formats.push([]);
+    const rowTexts=[];
+    for(let c=sc;c<=ec;c++){
+      clipboard.data[r-sr].push(data[r][c]);
+      clipboard.formats[r-sr].push({...formats[r][c]});
+      rowTexts.push(getCellDisplay(r,c));
+    }
+    text+=rowTexts.join('\t');
+    if(r<er)text+='\n';
+  }
+  try{navigator.clipboard.writeText(text)}catch(e){}
+}
+
+function pasteFromClipboard(text){
+  if(!text&&clipboard){
+    // Internal paste
+    pushUndo();
+    const r0=selectedCell.r,c0=selectedCell.c;
+    for(let r=0;r<clipboard.data.length;r++){
+      for(let c=0;c<clipboard.data[r].length;c++){
+        const tr=r0+r,tc=c0+c;
+        if(tr<ROWS&&tc<COLS){
+          data[tr][tc]=clipboard.data[r][c];
+          Object.assign(formats[tr][tc],clipboard.formats[r][c]);
+        }
+      }
+    }
+    saveData();
+    buildGrid();
+    selectCell(selectedCell.r,selectedCell.c);
+    return;
+  }
+  if(text){
+    pushUndo();
+    const lines=text.split('\n');
+    const r0=selectedCell.r,c0=selectedCell.c;
+    for(let r=0;r<lines.length;r++){
+      const cols=lines[r].split('\t');
+      for(let c=0;c<cols.length;c++){
+        const tr=r0+r,tc=c0+c;
+        if(tr<ROWS&&tc<COLS){
+          data[tr][tc]=cols[c];
+        }
+      }
+    }
+    saveData();
+    buildGrid();
+    selectCell(selectedCell.r,selectedCell.c);
+  }
+}
+
+// ===== FORMAT =====
+function toggleBold(){
+  pushUndo();
+  const cells=getSelectedRange();
+  const allBold=cells.every(c=>formats[c.r][c.c].bold);
+  cells.forEach(c=>{formats[c.r][c.c].bold=!allBold;refreshCell(c.r,c.c)});
+  saveData();
+  updateFormatButtons();
+}
+
+function toggleItalic(){
+  pushUndo();
+  const cells=getSelectedRange();
+  const allItalic=cells.every(c=>formats[c.r][c.c].italic);
+  cells.forEach(c=>{formats[c.r][c.c].italic=!allItalic;refreshCell(c.r,c.c)});
+  saveData();
+  updateFormatButtons();
+}
+
+function setAlign(align){
+  pushUndo();
+  const cells=getSelectedRange();
+  cells.forEach(c=>{formats[c.r][c.c].align=align;refreshCell(c.r,c.c)});
+  saveData();
+  updateFormatButtons();
+}
+
+function setTextColor(color){
+  pushUndo();
+  const cells=getSelectedRange();
+  cells.forEach(c=>{formats[c.r][c.c].color=color;refreshCell(c.r,c.c)});
+  saveData();
+}
+
+function setBgColor(color){
+  pushUndo();
+  const cells=getSelectedRange();
+  cells.forEach(c=>{formats[c.r][c.c].bg=color;refreshCell(c.r,c.c)});
+  saveData();
+}
+
+// ===== CSV =====
+function importCSV(text){
+  pushUndo();
+  const lines=parseCSV(text);
+  for(let r=0;r<Math.min(lines.length,ROWS);r++){
+    for(let c=0;c<Math.min(lines[r].length,COLS);c++){
+      data[r][c]=lines[r][c];
+    }
+  }
+  saveData();
+  buildGrid();
+  selectCell(0,0);
+}
+
+function parseCSV(text){
+  const lines=[];
+  let row=[];
+  let field='';
+  let inQuotes=false;
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(inQuotes){
+      if(ch==='"'){
+        if(i+1<text.length&&text[i+1]==='"'){field+='"';i++;}
+        else inQuotes=false;
+      }else{
+        field+=ch;
+      }
+    }else{
+      if(ch==='"'){inQuotes=true;}
+      else if(ch===','){row.push(field);field='';}
+      else if(ch==='\n'||ch==='\r'){
+        row.push(field);field='';
+        lines.push(row);row=[];
+        if(ch==='\r'&&i+1<text.length&&text[i+1]==='\n')i++;
+      }else{
+        field+=ch;
+      }
+    }
+  }
+  if(field||row.length){row.push(field);lines.push(row);}
+  return lines;
+}
+
+function exportCSV(){
+  let maxR=0,maxC=0;
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      if(data[r][c]!==''){maxR=Math.max(maxR,r);maxC=Math.max(maxC,c);}
+    }
+  }
+  let csv='';
+  for(let r=0;r<=maxR;r++){
+    const row=[];
+    for(let c=0;c<=maxC;c++){
+      const v=getCellDisplay(r,c);
+      if(v.includes(',')||v.includes('"')||v.includes('\n')){
+        row.push('"'+v.replace(/"/g,'""')+'"');
+      }else{
+        row.push(v);
+      }
+    }
+    csv+=row.join(',')+'\n';
+  }
+  const blob=new Blob([csv],{type:'text/csv'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=(sheetNameEl.value||'spreadsheet')+'.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ===== COLUMN RESIZE =====
+function initColResize(){
+  let resizing=false,startX=0,colIdx=0,startW=0;
+  grid.addEventListener('mousedown',function(e){
+    if(e.target.classList.contains('col-resize')){
+      e.preventDefault();
+      resizing=true;
+      colIdx=parseInt(e.target.dataset.col);
+      startX=e.clientX;
+      startW=colWidths[colIdx];
+      document.body.style.cursor='col-resize';
+    }
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!resizing)return;
+    const diff=e.clientX-startX;
+    const newW=Math.max(50,startW+diff);
+    colWidths[colIdx]=newW;
+    const th=grid.tHead.rows[0].cells[colIdx+1];
+    th.style.width=newW+'px';
+    th.style.minWidth=newW+'px';
+    // Also update all cells in that column
+    const rows=grid.tBodies[0].rows;
+    for(let r=0;r<rows.length;r++){
+      const td=rows[r].cells[colIdx+1];
+      if(td){td.style.minWidth=newW+'px';}
+    }
+  });
+  document.addEventListener('mouseup',function(){
+    if(resizing){
+      resizing=false;
+      document.body.style.cursor='';
+      saveData();
+    }
+  });
+}
+
+// ===== EVENTS =====
+function bindEvents(){
+  // Grid click
+  grid.addEventListener('mousedown',function(e){
+    const td=e.target.closest('td.cell');
+    if(!td)return;
+    const r=parseInt(td.dataset.r),c=parseInt(td.dataset.c);
+    if(e.shiftKey){
+      selectCell(r,c,true);
+    }else{
+      selectCell(r,c);
+      isSelecting=true;
+    }
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!isSelecting)return;
+    const td=document.elementFromPoint(e.clientX,e.clientY);
+    if(!td||!td.classList||!td.classList.contains('cell'))return;
+    const r=parseInt(td.dataset.r),c=parseInt(td.dataset.c);
+    clearSelectionHighlight();
+    selectionEnd={r,c};
+    applySelectionHighlight();
+    const mainTd=getCellTd(selectedCell.r,selectedCell.c);
+    if(mainTd)mainTd.classList.add('selected');
+    updateStatus();
+  });
+  document.addEventListener('mouseup',function(){isSelecting=false});
+  // Double click to edit
+  grid.addEventListener('dblclick',function(e){
+    const td=e.target.closest('td.cell');
+    if(!td)return;
+    const r=parseInt(td.dataset.r),c=parseInt(td.dataset.c);
+    selectCell(r,c);
+    startEditing(r,c);
+  });
+
+  // Keyboard
+  document.addEventListener('keydown',function(e){
+    // Formula bar focus
+    if(document.activeElement===formulaInput){
+      if(e.key==='Enter'){
+        e.preventDefault();
+        if(editing)finishEditing();
+        pushUndo();
+        data[selectedCell.r][selectedCell.c]=formulaInput.value;
+        saveData();
+        refreshCell(selectedCell.r,selectedCell.c);
+        refreshAllCells();
+        selectCell(selectedCell.r+1,selectedCell.c);
+        formulaInput.blur();
+      }else if(e.key==='Escape'){
+        formulaInput.value=data[selectedCell.r][selectedCell.c];
+        formulaInput.blur();
+      }
+      return;
+    }
+
+    // Sheet name focus
+    if(document.activeElement===sheetNameEl)return;
+
+    if(e.key==='Tab'){
+      e.preventDefault();
+      if(editing)finishEditing();
+      if(e.shiftKey){
+        selectCell(selectedCell.r,selectedCell.c-1);
+      }else{
+        selectCell(selectedCell.r,selectedCell.c+1);
+      }
+      return;
+    }
+
+    if(editing){
+      const input=getCellTd(editingCell.r,editingCell.c)?.querySelector('.cell-editor');
+      if(e.key==='Enter'){
+        e.preventDefault();
+        finishEditing();
+        if(e.shiftKey)selectCell(selectedCell.r-1,selectedCell.c);
+        else selectCell(selectedCell.r+1,selectedCell.c);
+      }else if(e.key==='Escape'){
+        e.preventDefault();
+        finishEditing(true);
+      }
+      return;
+    }
+
+    // Ctrl shortcuts
+    if(e.ctrlKey||e.metaKey){
+      if(e.key==='z'||e.key==='Z'){e.preventDefault();undo();return;}
+      if(e.key==='y'||e.key==='Y'){e.preventDefault();redo();return;}
+      if(e.key==='c'||e.key==='C'){e.preventDefault();copySelection();return;}
+      if(e.key==='v'||e.key==='V'){
+        e.preventDefault();
+        navigator.clipboard.readText().then(text=>{
+          if(text)pasteFromClipboard(text);
+          else pasteFromClipboard();
+        }).catch(()=>pasteFromClipboard());
+        return;
+      }
+      if(e.key==='b'||e.key==='B'){e.preventDefault();toggleBold();return;}
+      if(e.key==='i'||e.key==='I'){e.preventDefault();toggleItalic();return;}
+      return;
+    }
+
+    if(e.key==='F2'){
+      e.preventDefault();
+      startEditing(selectedCell.r,selectedCell.c);
+      return;
+    }
+
+    if(e.key==='Delete'||e.key==='Backspace'){
+      e.preventDefault();
+      pushUndo();
+      const cells=getSelectedRange();
+      cells.forEach(c=>{data[c.r][c.c]='';refreshCell(c.r,c.c)});
+      saveData();
+      refreshAllCells();
+      formulaInput.value='';
+      updateStatus();
+      return;
+    }
+
+    if(e.key==='ArrowUp'){e.preventDefault();selectCell(selectedCell.r-1,selectedCell.c,e.shiftKey);return;}
+    if(e.key==='ArrowDown'){e.preventDefault();selectCell(selectedCell.r+1,selectedCell.c,e.shiftKey);return;}
+    if(e.key==='ArrowLeft'){e.preventDefault();selectCell(selectedCell.r,selectedCell.c-1,e.shiftKey);return;}
+    if(e.key==='ArrowRight'){e.preventDefault();selectCell(selectedCell.r,selectedCell.c+1,e.shiftKey);return;}
+
+    if(e.key==='Enter'){
+      e.preventDefault();
+      if(e.shiftKey)selectCell(selectedCell.r-1,selectedCell.c);
+      else selectCell(selectedCell.r+1,selectedCell.c);
+      return;
+    }
+
+    // Start typing to edit
+    if(e.key.length===1&&!e.ctrlKey&&!e.metaKey&&!e.altKey){
+      startEditing(selectedCell.r,selectedCell.c,e.key);
+      e.preventDefault();
+    }
+  });
+
+  // Formula input click focuses it
+  formulaInput.addEventListener('focus',function(){
+    formulaInput.value=data[selectedCell.r][selectedCell.c];
+  });
+
+  // Toolbar buttons
+  document.getElementById('btn-bold').addEventListener('click',toggleBold);
+  document.getElementById('btn-italic').addEventListener('click',toggleItalic);
+  document.getElementById('btn-align-left').addEventListener('click',()=>setAlign('left'));
+  document.getElementById('btn-align-center').addEventListener('click',()=>setAlign('center'));
+  document.getElementById('btn-align-right').addEventListener('click',()=>setAlign('right'));
+  document.getElementById('text-color-picker').addEventListener('input',function(e){setTextColor(e.target.value)});
+  document.getElementById('bg-color-picker').addEventListener('input',function(e){setBgColor(e.target.value)});
+  document.getElementById('btn-undo').addEventListener('click',undo);
+  document.getElementById('btn-redo').addEventListener('click',redo);
+  document.getElementById('btn-import').addEventListener('click',function(){csvFileInput.click()});
+  document.getElementById('btn-export').addEventListener('click',exportCSV);
+
+  // CSV file input
+  csvFileInput.addEventListener('change',function(e){
+    const file=e.target.files[0];
+    if(!file)return;
+    const reader=new FileReader();
+    reader.onload=function(ev){importCSV(ev.target.result)};
+    reader.readAsText(file);
+    csvFileInput.value='';
+  });
+
+  // Drag and drop
+  let dragCounter=0;
+  document.addEventListener('dragenter',function(e){
+    e.preventDefault();
+    dragCounter++;
+    if(e.dataTransfer.types.includes('Files'))dropOverlay.classList.add('visible');
+  });
+  document.addEventListener('dragleave',function(e){
+    e.preventDefault();
+    dragCounter--;
+    if(dragCounter<=0){dragCounter=0;dropOverlay.classList.remove('visible');}
+  });
+  document.addEventListener('dragover',function(e){e.preventDefault()});
+  document.addEventListener('drop',function(e){
+    e.preventDefault();
+    dragCounter=0;
+    dropOverlay.classList.remove('visible');
+    const file=e.dataTransfer.files[0];
+    if(file&&(file.name.endsWith('.csv')||file.type==='text/csv')){
+      const reader=new FileReader();
+      reader.onload=function(ev){importCSV(ev.target.result)};
+      reader.readAsText(file);
+    }
+  });
+
+  // Upgrade toggle
+  document.getElementById('upgrade-toggle').addEventListener('click',function(){
+    document.getElementById('upgrade-prompt').classList.toggle('open');
+  });
+
+  // Column resize
+  initColResize();
+}
+
+// ===== SERVICE WORKER =====
+function registerSW(){
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  }
+}
+
+// Start
+init();
+})();
+</script>
+</body>
+</html>
