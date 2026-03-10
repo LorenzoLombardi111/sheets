@@ -71,7 +71,7 @@
       "name": "Can I import my existing Excel or Google Sheets file?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can import any CSV file \u2014 export your Excel or Google Sheets file as CSV first, then drag and drop it onto freesheet.app. Direct .xlsx import is a planned premium feature."
+        "text": "You can import CSV and Excel (.xlsx/.xls) files by dragging and dropping them onto freesheet.app or using the import button."
       }
     },
     {
@@ -237,11 +237,11 @@ html.dark .theme-toggle .t-moon{opacity:1}
   #header{padding:0 8px;gap:4px}
   #brand{font-size:13px}
   #formula-bar{margin:0 4px}
-  #cell-ref{min-width:32px;padding:2px 4px;font-size:11px}
+  #cell-ref{min-width:32px;padding:2px 4px;font-size:12px}
   #formula-input{padding:4px 8px;font-size:12px}
   .tb-btn{width:44px;height:44px;min-width:44px}
-  #formatting-toolbar .tb-btn{width:44px;height:36px;min-width:44px}
-  .color-pick{width:44px;height:36px}
+  #formatting-toolbar .tb-btn{width:44px;height:44px;min-width:44px}
+  .color-pick{width:44px;height:44px}
   #suite-badge span.long{display:none}
   #suite-badge span.short{display:inline}
 }
@@ -340,7 +340,7 @@ html.dark .theme-toggle .t-moon{opacity:1}
 <p>freesheet.app includes a built-in formula engine with 10 functions: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas start with an equals sign and support cell references like A1 or ranges like A1:A10. Circular references are detected and displayed as #CIRC, while other errors appear as #ERR or #DIV/0! so you can debug formulas easily.</p>
 <p>CSV import and export are supported out of the box. You can import a CSV file using the file picker button in the toolbar, or simply drag and drop a .csv file directly onto the grid. Exporting your spreadsheet as a CSV file is a single click away.</p>
 <p>Cell formatting includes bold, italic, text color, background color, and text alignment (left, center, or right). Formatting is applied per cell and persists when you save your spreadsheet.</p>
-<p>The grid provides 26 columns (A through Z) and 100 rows, with resizable column widths that you can adjust by dragging column header borders. The header row stays frozen as you scroll through your data.</p>
+<p>The grid provides 26 columns (A through Z) and 2,000 rows, with resizable column widths that you can adjust by dragging column header borders. The header row stays frozen as you scroll through your data.</p>
 <p>freesheet.app supports undo and redo with up to 50 steps of history. Press Ctrl+Z to undo and Ctrl+Y to redo, or use the toolbar buttons.</p>
 <p>Multi-cell selection works with click-and-drag or Shift+click. When multiple cells are selected, the status bar at the bottom displays live SUM, AVERAGE, and COUNT values for the selected range.</p>
 
@@ -375,7 +375,7 @@ html.dark .theme-toggle .t-moon{opacity:1}
 </details>
 <details>
 <summary>Can I import my existing Excel or Google Sheets file?</summary>
-<p>You can import any CSV file &mdash; export your Excel or Google Sheets file as CSV first, then drag and drop it onto freesheet.app. Direct .xlsx import is a planned premium feature.</p>
+<p>You can import CSV and Excel (.xlsx/.xls) files by dragging and dropping them onto freesheet.app or using the import button.</p>
 </details>
 <details>
 <summary>Is my spreadsheet data private?</summary>
@@ -590,8 +590,43 @@ function evalExpression(expr,visited){
   if(expr.startsWith('(')&&findClosingParen(expr,0)===expr.length-1){
     return evalExpression(expr.substring(1,expr.length-1),visited);
   }
-  // Split by + - (lowest precedence), right to left
+  // Split by comparison operators (lowest precedence), left to right
   let depth=0;
+  for(let i=0;i<expr.length;i++){
+    const ch=expr[i];
+    if(ch==='(')depth++;
+    else if(ch===')')depth--;
+    if(depth===0){
+      let op='',opLen=0;
+      if(expr[i]==='>'&&expr[i+1]==='='){op='>=';opLen=2;}
+      else if(expr[i]==='<'&&expr[i+1]==='='){op='<=';opLen=2;}
+      else if(expr[i]==='<'&&expr[i+1]==='>'){op='<>';opLen=2;}
+      else if(expr[i]==='='&&i>0){op='=';opLen=1;}
+      else if(expr[i]==='>'&&i>0){op='>';opLen=1;}
+      else if(expr[i]==='<'&&i>0){op='<';opLen=1;}
+      if(op&&i>0){
+        const left=evalExpression(expr.substring(0,i),visited);
+        const right=evalExpression(expr.substring(i+opLen),visited);
+        const l=toNumber(left),r2=toNumber(right);
+        if(!isNaN(l)&&!isNaN(r2)){
+          switch(op){
+            case '>':return l>r2?1:0;
+            case '<':return l<r2?1:0;
+            case '>=':return l>=r2?1:0;
+            case '<=':return l<=r2?1:0;
+            case '=':return l===r2?1:0;
+            case '<>':return l!==r2?1:0;
+          }
+        }
+        // String comparison for =
+        if(op==='=')return String(left)===String(right)?1:0;
+        if(op==='<>')return String(left)!==String(right)?1:0;
+        return '#ERR';
+      }
+    }
+  }
+  // Split by + - (lowest arithmetic precedence), right to left
+  depth=0;
   for(let i=expr.length-1;i>=0;i--){
     const ch=expr[i];
     if(ch===')')depth++;
