@@ -1,0 +1,339 @@
+# freesheet.app — Full Content
+
+> Complete text content of all pages on freesheet.app in Markdown format.
+
+---
+
+## / — Free Online Spreadsheet — No Login Required
+
+freesheet.app is a free online spreadsheet that works entirely in your browser with no login, no account, and no cloud storage required. It supports formulas like SUM, AVERAGE, IF, and more, plus CSV import and export, cell formatting, and undo/redo — everything you need for everyday spreadsheet tasks. freesheet.app loads in under 200ms and saves your work automatically to your browser's localStorage, so your data is always there when you come back. Whether you need to quickly tally a budget, track a personal project, or clean up CSV data, freesheet.app gives you a full spreadsheet experience without asking for your email, without loading ads, and without sending your data to anyone's servers. Open the page and start typing — your spreadsheet is ready.
+
+### What features does freesheet.app offer?
+
+freesheet.app includes a built-in formula engine with 10 functions: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas start with an equals sign and support cell references like A1 or ranges like A1:A10. Circular references are detected and displayed as #CIRC, while other errors appear as #ERR or #DIV/0! so you can debug formulas easily.
+
+CSV import and export are supported out of the box. You can import a CSV file using the file picker button in the toolbar, or simply drag and drop a .csv file directly onto the grid. Exporting your spreadsheet as a CSV file is a single click away.
+
+Cell formatting includes bold, italic, text color, background color, and text alignment (left, center, or right). Formatting is applied per cell and persists when you save your spreadsheet.
+
+The grid provides 26 columns (A through Z) and 2,000 rows, with resizable column widths that you can adjust by dragging column header borders. The header row stays frozen as you scroll through your data.
+
+freesheet.app supports undo and redo with up to 50 steps of history. Press Ctrl+Z to undo and Ctrl+Y to redo, or use the toolbar buttons.
+
+Multi-cell selection works with click-and-drag or Shift+click. When multiple cells are selected, the status bar at the bottom displays live SUM, AVERAGE, and COUNT values for the selected range.
+
+### How does this free online spreadsheet work?
+
+Getting started with freesheet.app takes seconds. Open the page in any modern browser and you will see a full spreadsheet grid ready for input. There is no account creation, no setup wizard, and no loading screen. Click any cell and start typing numbers, text, or formulas.
+
+If you already have data in another application, export it as a CSV file and import it into freesheet.app. You can use the import button in the toolbar or drag the CSV file directly onto the grid. Your data will populate the cells instantly.
+
+When you are finished working, your spreadsheet is already saved. freesheet.app automatically stores all cell data, formatting, and preferences in your browser's localStorage. You can also export your work as a CSV file to share with others or open in another application.
+
+### Why is freesheet.app better than other free spreadsheet apps?
+
+Google Sheets and Microsoft Excel Online are powerful tools, but they require you to create an account and store your data on their servers. For quick, private spreadsheet tasks, that overhead is unnecessary. freesheet.app gives you a functional spreadsheet in under 200ms with zero friction.
+
+Many free spreadsheet alternatives are loaded with ads, pop-ups, and tracking scripts that slow down the experience and compromise your privacy. freesheet.app contains no ads, no analytics, and no third-party scripts. The entire application is a single HTML file with inline CSS and vanilla JavaScript.
+
+freesheet.app works offline after your first visit. A service worker caches all resources so you can use the spreadsheet on a plane, on the train, or anywhere without an internet connection. Your data never leaves your device.
+
+For everyday tasks like budgeting, project tracking, data cleanup, and quick calculations, freesheet.app provides exactly what you need without the complexity of a full office suite. It is fast, private, and always available.
+
+### Is freesheet.app private and safe to use?
+
+freesheet.app stores all data exclusively in your browser's localStorage. No data is transmitted to any server at any time. There is no backend, no database, no API calls, and no cloud sync. Your spreadsheet data stays on your device and is never accessible to anyone else.
+
+freesheet.app does not use cookies, analytics, tracking pixels, or any form of user monitoring. There are no third-party scripts loaded on the page. The application runs entirely in your browser and can function fully offline.
+
+Because your data is stored in localStorage, it persists between sessions but is tied to your browser. Clearing your browser data will remove your spreadsheet. For important work, use the CSV export feature to save a backup file.
+
+### FAQ
+
+**Is freesheet.app really free with no login?**
+Yes. freesheet.app is completely free and requires no account, email, or login. Open the site and start working immediately. There are no ads inside the app and no hidden paywalls on the core features.
+
+**Does freesheet.app work offline?**
+Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. Your spreadsheet data is saved to your browser's localStorage, not a remote server.
+
+**What formulas does freesheet.app support?**
+freesheet.app supports 10 built-in formulas: SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. Formulas are entered with an = sign, support cell references like A1 and ranges like A1:A10, and display errors clearly as #ERR or #DIV/0!.
+
+**Can I import my existing Excel or Google Sheets file?**
+You can import CSV and Excel (.xlsx/.xls) files by dragging and dropping them onto freesheet.app or using the import button.
+
+**Is my spreadsheet data private?**
+Yes. freesheet.app never sends your data to any server. Everything is processed and stored locally in your browser using localStorage. No analytics, no tracking, no cloud sync.
+
+**Can I use freesheet.app on my phone?**
+Yes. freesheet.app is fully mobile responsive. The grid scrolls horizontally on small screens, and all toolbar buttons meet the 44px minimum touch target size. Editing cells works with the native mobile keyboard.
+
+---
+
+## /vs-google-sheets — freesheet.app vs Google Sheets: Free No-Login Alternative
+
+Google Sheets is one of the most popular spreadsheet applications in the world, and for good reason. It offers real-time collaboration, over 400 built-in functions, seamless Google Drive integration, and it is free for anyone with a Google account. For teams working together on data, it is hard to beat.
+
+But not every spreadsheet task requires a Google account, cloud storage, or collaboration features. If you need to quickly crunch numbers, organize a list, or clean up some CSV data without signing in to anything, freesheet.app offers a faster, more private alternative.
+
+### How do freesheet.app and Google Sheets compare?
+
+| Feature | freesheet.app | Google Sheets |
+|---|---|---|
+| Account required | No | Yes (Google account) |
+| Data storage | Browser localStorage | Google Drive (cloud) |
+| Privacy | 100% local, no server | Google servers |
+| Load time | Under 200ms | 2-5 seconds |
+| Works offline | Yes (service worker) | Limited (requires setup) |
+| Real-time collaboration | No | Yes |
+| Formula count | 10 | 400+ |
+| CSV import | Yes | Yes |
+| Excel import | Yes (.xlsx/.xls) | Yes |
+| Cell formatting | Bold, italic, colors, alignment | Full formatting suite |
+| Cost | Free, no ads | Free with Google account |
+
+### When should you use freesheet.app instead of Google Sheets?
+
+freesheet.app is the better choice when you want instant access without any friction. There is no sign-in page, no terms of service to accept, and no loading screen. Open the page and your spreadsheet is ready. Your data stays entirely in your browser and is never uploaded to any server, which makes freesheet.app ideal for sensitive personal data like budgets, health tracking, or financial planning.
+
+If you are on a slow connection or working offline, freesheet.app works reliably after a single visit thanks to its service worker. Google Sheets can work offline too, but it requires enabling offline mode in advance and only works in Chrome.
+
+### When is Google Sheets the better choice?
+
+Google Sheets is the right tool when you need to collaborate with others in real time. Its ability to have multiple people editing the same spreadsheet simultaneously, with live cursors and comment threads, is a feature freesheet.app does not offer. If your work involves complex data analysis with pivot tables, VLOOKUP across multiple sheets, or integration with Google Forms and other Google Workspace tools, Google Sheets provides capabilities that go far beyond what a lightweight browser spreadsheet can do.
+
+Google Sheets also stores your data in the cloud, which means you can access it from any device. With freesheet.app, your data lives in your browser's localStorage and is tied to that specific browser on that specific device.
+
+### What about privacy and data ownership?
+
+This is the most significant difference between the two tools. Google Sheets stores your data on Google's servers, where it is subject to Google's privacy policy and data processing practices. freesheet.app never sends your data anywhere. There is no backend, no analytics, no tracking, and no third-party scripts. Your spreadsheet data exists only on your device and is completely under your control.
+
+For users who are privacy-conscious or who work with sensitive information that should not leave their computer, freesheet.app provides a level of data isolation that cloud-based tools simply cannot match.
+
+### FAQ
+
+**Is freesheet.app a good replacement for Google Sheets?**
+For personal tasks like budgeting, lists, and quick calculations, yes. freesheet.app loads instantly with no login and keeps all data private in your browser. For team collaboration or complex data analysis with hundreds of functions, Google Sheets is the better choice.
+
+**Can I import my Google Sheets data into freesheet.app?**
+Yes. Export your Google Sheet as a CSV or Excel file, then drag and drop it onto freesheet.app. Your data will populate the grid instantly. Formulas from Google Sheets will be imported as their last computed values.
+
+**Does freesheet.app support real-time collaboration like Google Sheets?**
+No. freesheet.app is a single-user, privacy-first spreadsheet. All data stays in your browser's localStorage and is never sent to a server. If you need multiple people editing simultaneously, Google Sheets is the right tool.
+
+**Is freesheet.app really free?**
+Yes, completely free with no account, no ads, and no hidden paywalls on core features. Google Sheets is also free but requires a Google account and stores your data on Google's servers.
+
+---
+
+## /vs-excel-online — freesheet.app vs Excel Online: Lightweight Free Alternative
+
+Microsoft Excel is the gold standard of spreadsheet software. Excel Online brings much of that power to the browser, with full .xlsx file compatibility, Power Query for data transformation, enterprise-grade security, and seamless OneDrive integration. For business users already invested in the Microsoft ecosystem, Excel Online is the natural choice.
+
+However, Excel Online requires a Microsoft account, loads slowly compared to lightweight alternatives, and sends all your data to Microsoft's cloud. For personal tasks where you just need a quick spreadsheet with no setup, freesheet.app offers a radically simpler experience.
+
+### How do freesheet.app and Excel Online compare?
+
+| Feature | freesheet.app | Excel Online |
+|---|---|---|
+| Account required | No | Yes (Microsoft account) |
+| Data storage | Browser localStorage | OneDrive (cloud) |
+| Privacy | 100% local, no server | Microsoft servers |
+| Load time | Under 200ms | 3-8 seconds |
+| Works offline | Yes | No |
+| .xlsx file support | Import only | Full read/write |
+| Power Query | No | Yes |
+| Pivot tables | No | Yes |
+| Formula count | 10 | 400+ |
+| VBA / Macros | No | Limited (Office Scripts) |
+| Cost | Free, no ads | Free (basic) / M365 subscription |
+
+### When should you choose freesheet.app over Excel Online?
+
+freesheet.app is built for speed and privacy. It loads in under 200 milliseconds because the entire application is a single HTML file with no server calls. There is no authentication step, no loading spinner, and no telemetry. If you need to jot down a quick budget, organize a list, or check some CSV data, freesheet.app gets you there faster than Excel Online can finish loading its interface.
+
+Privacy is the other major advantage. freesheet.app stores all data exclusively in your browser's localStorage. Nothing is transmitted to any server, ever. There are no cookies, no analytics, and no third-party scripts on the page. For anyone handling sensitive personal data, this level of isolation is meaningful.
+
+freesheet.app also works fully offline after a single visit. Excel Online requires a persistent internet connection for all operations.
+
+### When is Excel Online the right tool?
+
+Excel Online is the right choice when you need the full power of Excel in the browser. Its .xlsx file compatibility means you can open, edit, and save Excel files without any conversion or data loss. Power Query lets you transform and clean large datasets with a visual editor. Pivot tables give you powerful summarization and analysis capabilities. And if your organization uses Microsoft 365, Excel Online integrates with Teams, SharePoint, and the rest of the Microsoft ecosystem.
+
+Excel Online also stores your files in OneDrive, which means you can access your spreadsheets from any device and share them with colleagues. freesheet.app keeps data in one browser on one device, which is a deliberate privacy choice but a limitation for cross-device workflows.
+
+### What about importing Excel files into freesheet.app?
+
+freesheet.app can import .xlsx and .xls files directly. Drag an Excel file onto the grid or use the import button, and the first sheet's data will populate your cells. Formulas in the Excel file are imported as their last computed values rather than as live formulas, since freesheet.app has its own simpler formula engine. For data review and quick edits, this works well. For complex Excel workbooks with macros, linked sheets, or advanced formulas, Excel Online is the appropriate tool.
+
+### FAQ
+
+**Can freesheet.app open Excel files?**
+Yes. freesheet.app supports importing .xlsx and .xls files. Drag and drop your Excel file onto the grid or use the import button. Formulas are imported as their last computed values, not as live formulas.
+
+**Is freesheet.app faster than Excel Online?**
+Yes. freesheet.app loads in under 200 milliseconds because it is a single HTML file with no server calls. Excel Online typically takes 3-8 seconds to load and requires authentication with Microsoft.
+
+**Does freesheet.app work without internet?**
+Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. Excel Online requires an internet connection for most operations.
+
+**Can I use freesheet.app for enterprise work?**
+freesheet.app is designed for personal and quick-use scenarios, not enterprise workflows. If you need Power Query, pivot tables, VBA macros, or IT-managed access controls, Excel Online with a Microsoft 365 subscription is the better fit.
+
+---
+
+## /vs-zoho-sheet — freesheet.app vs Zoho Sheet: Simple Free Alternative
+
+Zoho Sheet is a capable online spreadsheet that forms part of the broader Zoho Workplace suite. It offers team collaboration, a large formula library, macro support via Deluge scripting, and tight integration with other Zoho apps like Zoho CRM, Zoho Analytics, and Zoho Projects. For small businesses already using Zoho's ecosystem, Zoho Sheet is a solid choice.
+
+But Zoho Sheet requires creating a Zoho account, stores your data on Zoho's cloud servers, and has a heavier interface than necessary for simple personal tasks. freesheet.app takes the opposite approach: zero setup, zero cloud, and instant access to a working spreadsheet.
+
+### How do freesheet.app and Zoho Sheet compare?
+
+| Feature | freesheet.app | Zoho Sheet |
+|---|---|---|
+| Account required | No | Yes (Zoho account) |
+| Data storage | Browser localStorage | Zoho cloud |
+| Privacy | 100% local, no server | Zoho servers |
+| Load time | Under 200ms | 2-6 seconds |
+| Works offline | Yes | Limited |
+| Team collaboration | No | Yes |
+| Macros / Scripting | No | Yes (Deluge) |
+| Formula count | 10 | 350+ |
+| CSV import | Yes | Yes |
+| Excel import | Yes (.xlsx/.xls) | Yes |
+| Cost | Free, no ads | Free (basic) / paid plans |
+
+### Why choose freesheet.app over Zoho Sheet?
+
+The core advantage of freesheet.app is that it eliminates every barrier between you and a working spreadsheet. There is no account creation form to fill out, no email verification to complete, and no privacy policy to review. Open the page and start typing. Your data never leaves your device, and the application works fully offline after a single visit.
+
+freesheet.app loads in under 200 milliseconds because the entire application is self-contained. There are no API calls, no analytics scripts, and no third-party resources beyond the font files. This makes freesheet.app noticeably faster and lighter than Zoho Sheet's full-featured interface.
+
+For tasks like personal budgets, shopping lists, grade tracking, or quick CSV data inspection, the simplicity of freesheet.app is a feature, not a limitation. You get exactly what you need without the overhead of a platform you are not using.
+
+### When does Zoho Sheet make more sense?
+
+Zoho Sheet is the better choice when your work involves team collaboration. Its real-time co-editing, comments, and sharing features let multiple people work on the same spreadsheet simultaneously. If you use other Zoho apps, the integration between Zoho Sheet and the rest of the Zoho suite adds significant value through shared data and automated workflows.
+
+Zoho Sheet also offers Deluge scripting for automating repetitive tasks, conditional formatting with more options than freesheet.app provides, and a formula library with over 350 functions. For data analysis, reporting, or any workflow that benefits from advanced spreadsheet features, Zoho Sheet has capabilities that a lightweight browser tool does not attempt to match.
+
+### What about data privacy?
+
+Zoho has a generally strong reputation for privacy compared to some competitors, and they offer data residency options for business customers. However, your data is still stored on Zoho's servers and is subject to their terms of service. freesheet.app stores all data in your browser's localStorage with no server component whatsoever. There is no backend, no database, and no network traffic. For users who want complete control over where their data lives, freesheet.app provides absolute data isolation.
+
+### FAQ
+
+**How does freesheet.app compare to Zoho Sheet for personal use?**
+For personal use where privacy and speed matter most, freesheet.app is simpler and faster. It requires no account and stores nothing in the cloud. Zoho Sheet offers more features like macros and collaboration, but requires a Zoho account and stores data on Zoho's servers.
+
+**Does Zoho Sheet require an account?**
+Yes. Zoho Sheet requires a free Zoho account to use. freesheet.app requires no account, no email, and no signup of any kind. Open the page and start working immediately.
+
+**Can freesheet.app replace Zoho Sheet for team collaboration?**
+No. freesheet.app is a single-user tool with no collaboration features. If you need shared spreadsheets, comments, and team editing, Zoho Sheet or Google Sheets are better choices.
+
+**Is freesheet.app available on mobile?**
+Yes. freesheet.app is fully responsive and works on phones and tablets. The grid scrolls horizontally, and all toolbar buttons meet the 44px minimum touch target size. Zoho Sheet also has a mobile app.
+
+---
+
+## /free-spreadsheet-for-students — Free Online Spreadsheet for Students — No Login
+
+Students need spreadsheets for all kinds of tasks: calculating grade averages, organizing research data, tracking assignment deadlines, managing personal budgets, and completing coursework that involves data analysis. Most spreadsheet tools require creating an account and signing in, which adds unnecessary friction when you just want to get work done.
+
+freesheet.app is a free online spreadsheet that works instantly in your browser with no login, no account, and no cloud storage. Open the page, and your spreadsheet is ready. No email address required, no terms of service to accept, and no data leaves your device.
+
+### Why is freesheet.app good for students?
+
+Speed and simplicity are the main reasons. freesheet.app loads in under 200 milliseconds, which means you can open it between classes, during a study session, or in the library and start working immediately. There is no loading screen, no authentication step, and no onboarding tutorial blocking your way.
+
+Privacy is another important factor. Many students are cautious about sharing personal information with online services, especially when school policies may restrict which cloud services can be used. freesheet.app stores all data exclusively in your browser's localStorage. Nothing is sent to any server, and there are no analytics or tracking scripts on the page. Your spreadsheet data stays on your device.
+
+freesheet.app also works on any device with a web browser. It runs on school Chromebooks, personal laptops, tablets, and phones. The interface is fully responsive, with touch-friendly buttons that work well on mobile screens. No software installation is needed.
+
+### What can students do with freesheet.app?
+
+freesheet.app includes 10 built-in formulas that cover the most common student needs. Use AVERAGE to calculate your grade point average across courses. Use SUM to total up expenses in a personal budget. Use COUNT to tally responses in a survey dataset. Use IF to create conditional calculations like pass/fail indicators. MIN and MAX help you find the range in a dataset for statistics homework.
+
+The spreadsheet supports cell formatting with bold, italic, text color, background color, and text alignment, so you can make your data presentable for class submissions. CSV import lets you bring in data from other sources, and CSV export lets you save your work as a file you can submit or open in another application.
+
+With 26 columns and 2,000 rows, there is plenty of room for most student projects. Undo and redo with up to 50 steps of history means you can experiment with your data without worrying about losing previous work.
+
+### How does freesheet.app compare to Google Sheets for students?
+
+Google Sheets is a powerful tool that many schools provide through Google Workspace for Education. It offers real-time collaboration, hundreds of functions, and cloud storage via Google Drive. If your school provides Google accounts and your assignment requires collaboration with classmates, Google Sheets is the appropriate choice.
+
+freesheet.app is better for individual work where you want instant access without signing in. It is faster to load, completely private, and works offline. If you need a quick calculation during a lecture, want to organize personal notes without a Google account, or prefer not to store your data in the cloud, freesheet.app fills that gap.
+
+### Does it work offline for studying on the go?
+
+Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. This is useful for students who study on public transit, in areas with spotty Wi-Fi, or in locations where internet access is limited. Your spreadsheet data is saved automatically to localStorage, so it persists between sessions even without a network connection.
+
+### FAQ
+
+**Do I need to create an account to use freesheet.app?**
+No. freesheet.app requires no account, no email, and no signup. Open the page and start working. This makes it ideal for students who do not want to share personal information with another service.
+
+**Can I use freesheet.app on a school Chromebook?**
+Yes. freesheet.app runs entirely in the browser and works on Chromebooks, tablets, phones, and any device with a modern web browser. No software installation is required.
+
+**Does freesheet.app support formulas for grade calculations?**
+Yes. freesheet.app supports SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. These are sufficient for calculating grade averages, weighted totals, and basic statistics.
+
+**Will my data be saved if I close the browser?**
+Yes. freesheet.app automatically saves your data to localStorage in your browser. When you reopen the page, your spreadsheet will be exactly as you left it. However, clearing browser data will erase your spreadsheet, so export important work as CSV.
+
+**Can I export my spreadsheet for a class assignment?**
+Yes. Click the export button to download your spreadsheet as a CSV file, which can be opened in Excel, Google Sheets, or any other spreadsheet application. This makes it easy to submit data for class projects.
+
+---
+
+## /free-spreadsheet-no-account — Free Spreadsheet Online with No Account or Signup
+
+Every major online spreadsheet requires you to create an account before you can use it. Google Sheets needs a Google account. Excel Online needs a Microsoft account. Zoho Sheet needs a Zoho account. Even many smaller alternatives ask for your email address before letting you touch a cell. freesheet.app is different. It requires nothing.
+
+Open freesheet.app in any browser and you have a fully functional spreadsheet ready for input. No account creation, no email verification, no password to remember, and no terms of service to agree to. Your data stays entirely in your browser and is never sent to any server.
+
+### Why would you want a spreadsheet with no account?
+
+There are many legitimate reasons to avoid creating yet another online account. You might be on a shared computer and do not want to sign in to a personal account. You might be privacy-conscious and prefer not to hand your data to a cloud service. You might be in a hurry and do not want to spend two minutes on a signup form when you just need to add up a column of numbers. Or you might simply be tired of the account fatigue that comes with modern software.
+
+freesheet.app respects all of these situations. It provides a capable spreadsheet experience with zero friction. The application loads in under 200 milliseconds, and your spreadsheet is ready the moment the page appears. There is no loading screen, no cookie consent banner, and no onboarding flow.
+
+### What features are included without an account?
+
+Everything. freesheet.app does not gate any features behind a login or paywall. You get 10 built-in formulas including SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, and TODAY. You get cell formatting with bold, italic, text color, background color, and text alignment. You get CSV and Excel file import via file picker or drag-and-drop, and CSV export to save your work. You get undo and redo with 50 steps of history, multi-cell selection with live status bar statistics, resizable columns, and dark mode.
+
+The grid provides 26 columns (A through Z) and 2,000 rows, which is more than enough for personal budgets, project tracking, data cleanup, and most everyday spreadsheet tasks.
+
+### How is your data saved without an account?
+
+freesheet.app uses your browser's localStorage to save all cell data, formatting, column widths, and the sheet name. This storage persists between browser sessions, so when you come back to freesheet.app tomorrow, your spreadsheet will be exactly as you left it. No server, no sync, no cloud backup.
+
+The trade-off is that your data is tied to one browser on one device. If you switch to a different computer, you will not see your previous spreadsheet. For important work, use the CSV export button to download a backup file that you can open anywhere. This is a deliberate design choice: by keeping data local, freesheet.app ensures that your information never leaves your device.
+
+### Is it really private with no tracking?
+
+Yes. freesheet.app contains no analytics scripts, no tracking pixels, no cookies, and no third-party code beyond font files from Google Fonts. There is no backend server, no database, and no API. The entire application is a single HTML file that runs entirely in your browser. Your spreadsheet data exists only in localStorage on your device and is never accessible to anyone else, including the developers of freesheet.app.
+
+### Does it work offline?
+
+Yes. After your first visit, freesheet.app is cached by a service worker and works fully offline. You can open it on a plane, on a train, or anywhere without internet. Data is saved to localStorage automatically, so nothing is lost when you are disconnected. This makes freesheet.app one of the few online spreadsheets that truly works without any network connection.
+
+### FAQ
+
+**Is there really a free spreadsheet with no account required?**
+Yes. freesheet.app is a fully functional online spreadsheet that requires no account, no email, and no signup. Open the page and start working immediately. There are no hidden paywalls, no ads, and no data collection.
+
+**Where is my data stored if there is no account?**
+Your data is stored in your browser's localStorage. This means it stays on your device and is never uploaded to any server. The data persists between browser sessions but is tied to your specific browser. For backup, export your work as CSV.
+
+**What features does freesheet.app include?**
+freesheet.app includes 10 formulas (SUM, AVERAGE, MIN, MAX, COUNT, IF, ROUND, ABS, CONCAT, TODAY), CSV and Excel import/export, cell formatting (bold, italic, colors, alignment), undo/redo, multi-cell selection, column resizing, and dark mode.
+
+**Can I use this spreadsheet on my phone?**
+Yes. freesheet.app is fully responsive and works on phones, tablets, and any device with a modern browser. Touch targets are sized at 44px minimum for comfortable mobile use.
+
+**How is this different from Google Sheets or Excel Online?**
+Google Sheets and Excel Online both require accounts and store data in the cloud. freesheet.app requires nothing: no account, no cloud, no personal information. It loads in under 200ms, works offline, and keeps all data in your browser.
