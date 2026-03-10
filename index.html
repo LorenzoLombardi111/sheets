@@ -18,6 +18,7 @@
 <meta name="twitter:image" content="/og-image.svg">
 <meta name="theme-color" content="#faf9f6">
 <link rel="manifest" href="/manifest.json">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
@@ -210,6 +211,10 @@ html.dark .theme-toggle .t-moon{opacity:1}
 #drop-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(196,154,42,0.08);border:3px dashed var(--accent);z-index:100;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--accent);font-weight:600}
 #drop-overlay.visible{display:flex}
 
+/* Toast notification */
+#toast{position:fixed;bottom:48px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 16px;color:var(--text-primary);box-shadow:var(--shadow);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.15s ease;white-space:nowrap}
+#toast.visible{opacity:1}
+
 /* Hidden file input */
 #csv-file-input{display:none}
 
@@ -277,7 +282,7 @@ html.dark .theme-toggle .t-moon{opacity:1}
       <input type="color" id="bg-color-picker" value="#faf9f6" aria-label="Cell background color">
     </div>
     <div class="tb-sep"></div>
-    <button class="tb-btn" id="btn-import" title="Import CSV" aria-label="Import CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+    <button class="tb-btn" id="btn-import" title="Import CSV or Excel" aria-label="Import CSV or Excel"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     <button class="tb-btn" id="btn-export" title="Export CSV" aria-label="Export CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></button>
     <div class="tb-sep"></div>
     <button class="tb-btn" id="btn-undo" title="Undo (Ctrl+Z)" aria-label="Undo"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
@@ -321,7 +326,8 @@ html.dark .theme-toggle .t-moon{opacity:1}
 </div>
 <div id="suite-badge"><span class="long">by freesuite.app</span><span class="short">freesuite.app</span></div>
 <div id="drop-overlay">Drop CSV file here</div>
-<input type="file" id="csv-file-input" accept=".csv,text/csv">
+<input type="file" id="csv-file-input" accept=".csv,.xlsx,.xls">
+<div id="toast"></div>
 
 <section class="seo-content">
 <article>
@@ -1171,6 +1177,52 @@ function exportCSV(){
     }
     csv+=row.join(',')+'\n';
   }
+function handleExcelFile(file,callback){
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const wb=XLSX.read(ev.target.result,{type:'arraybuffer'});
+    const sheet=wb.Sheets[wb.SheetNames[0]];
+    const rows=XLSX.utils.sheet_to_json(sheet,{header:1});
+    pushUndo();
+    for(let r=0;r<Math.min(rows.length,ROWS);r++){
+      if(!rows[r])continue;
+      for(let c=0;c<Math.min(rows[r].length,COLS);c++){
+        data[r][c]=rows[r][c]!=null?String(rows[r][c]):'';
+      }
+    }
+    saveData();
+    buildGrid();
+    selectCell(0,0);
+    if(callback)callback();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function showToast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.classList.add('visible');
+  clearTimeout(el._timer);
+  el._timer=setTimeout(function(){el.classList.remove('visible')},3000);
+}
+
+function handleImportFile(file){
+  if(!file)return;
+  const name=file.name.toLowerCase();
+  if(name.endsWith('.xlsx')||name.endsWith('.xls')){
+    handleExcelFile(file,function(){
+      showToast('\u2713 Imported '+file.name+' \u2014 formulas shown as values');
+    });
+  }else{
+    const reader=new FileReader();
+    reader.onload=function(ev){
+      importCSV(ev.target.result);
+      showToast('\u2713 Imported '+file.name);
+    };
+    reader.readAsText(file);
+  }
+}
+
   const blob=new Blob([csv],{type:'text/csv'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
@@ -1375,13 +1427,10 @@ function bindEvents(){
   document.getElementById('btn-import').addEventListener('click',function(){csvFileInput.click()});
   document.getElementById('btn-export').addEventListener('click',exportCSV);
 
-  // CSV file input
+  // File input (CSV / Excel)
   csvFileInput.addEventListener('change',function(e){
     const file=e.target.files[0];
-    if(!file)return;
-    const reader=new FileReader();
-    reader.onload=function(ev){importCSV(ev.target.result)};
-    reader.readAsText(file);
+    handleImportFile(file);
     csvFileInput.value='';
   });
 
@@ -1403,10 +1452,11 @@ function bindEvents(){
     dragCounter=0;
     dropOverlay.classList.remove('visible');
     const file=e.dataTransfer.files[0];
-    if(file&&(file.name.endsWith('.csv')||file.type==='text/csv')){
-      const reader=new FileReader();
-      reader.onload=function(ev){importCSV(ev.target.result)};
-      reader.readAsText(file);
+    if(file){
+      const name=file.name.toLowerCase();
+      if(name.endsWith('.csv')||name.endsWith('.xlsx')||name.endsWith('.xls')){
+        handleImportFile(file);
+      }
     }
   });
 
