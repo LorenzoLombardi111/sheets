@@ -282,6 +282,7 @@ html.dark .theme-toggle .t-moon{opacity:1}
       <input type="color" id="bg-color-picker" value="#faf9f6" aria-label="Cell background color">
     </div>
     <div class="tb-sep"></div>
+    <button class="tb-btn" id="btn-new" title="New Sheet" aria-label="New Sheet"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></button>
     <button class="tb-btn" id="btn-import" title="Import CSV or Excel" aria-label="Import CSV or Excel"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     <button class="tb-btn" id="btn-export" title="Export CSV" aria-label="Export CSV"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></button>
     <div class="tb-sep"></div>
@@ -396,7 +397,7 @@ html.dark .theme-toggle .t-moon{opacity:1}
 
 // Constants
 const COLS = 26;
-const ROWS = 100;
+const ROWS = 2000;
 const MAX_UNDO = 50;
 const LS_DATA = 'freesheet_data';
 const LS_FORMAT = 'freesheet_format';
@@ -1177,6 +1178,15 @@ function exportCSV(){
     }
     csv+=row.join(',')+'\n';
   }
+  const blob=new Blob([csv],{type:'text/csv'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=(sheetNameEl.value||'spreadsheet')+'.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function handleExcelFile(file,callback){
   const reader=new FileReader();
   reader.onload=function(ev){
@@ -1208,13 +1218,13 @@ function showToast(msg){
 
 function handleImportFile(file){
   if(!file)return;
-  const name=file.name.toLowerCase();
+  var name=file.name.toLowerCase();
   if(name.endsWith('.xlsx')||name.endsWith('.xls')){
     handleExcelFile(file,function(){
       showToast('\u2713 Imported '+file.name+' \u2014 formulas shown as values');
     });
   }else{
-    const reader=new FileReader();
+    var reader=new FileReader();
     reader.onload=function(ev){
       importCSV(ev.target.result);
       showToast('\u2713 Imported '+file.name);
@@ -1223,13 +1233,97 @@ function handleImportFile(file){
   }
 }
 
-  const blob=new Blob([csv],{type:'text/csv'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download=(sheetNameEl.value||'spreadsheet')+'.csv';
-  a.click();
-  URL.revokeObjectURL(url);
+// ===== NEW SHEET =====
+function clearSheet(){
+  pushUndo();
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      data[r][c]='';
+      formats[r][c]={bold:false,italic:false,color:'',bg:'',align:''};
+    }
+  }
+  localStorage.removeItem(LS_DATA);
+  localStorage.removeItem(LS_FORMAT);
+  localStorage.removeItem(LS_COLW);
+  localStorage.removeItem(LS_NAME);
+  sheetNameEl.value='Untitled Spreadsheet';
+  colWidths=Array(COLS).fill(100);
+  buildGrid();
+  selectCell(0,0);
+}
+
+function showNewSheetModal(){
+  // Remove any existing modal
+  var existing=document.getElementById('new-sheet-modal');
+  if(existing)existing.remove();
+
+  var overlay=document.createElement('div');
+  overlay.id='new-sheet-modal';
+  overlay.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1000;display:flex;align-items:center;justify-content:center';
+
+  var box=document.createElement('div');
+  box.style.cssText='background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;max-width:400px;width:90%;box-shadow:var(--shadow)';
+
+  var title=document.createElement('div');
+  title.textContent='Start a new sheet?';
+  title.style.cssText='font-family:"DM Sans",sans-serif;font-size:16px;font-weight:600;color:var(--text-primary)';
+
+  var body=document.createElement('div');
+  body.textContent='Your current spreadsheet will be cleared. Download it first as a CSV to keep a copy.';
+  body.style.cssText='font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-secondary);margin-top:8px';
+
+  var btnWrap=document.createElement('div');
+  btnWrap.style.cssText='display:flex;flex-direction:column;gap:8px;margin-top:24px';
+
+  function makeBtn(label,primary){
+    var btn=document.createElement('button');
+    btn.textContent=label;
+    btn.style.cssText='width:100%;padding:8px 16px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);';
+    if(primary){
+      btn.style.background='var(--accent)';
+      btn.style.color='var(--accent-text)';
+      btn.style.borderColor='var(--accent)';
+    }else{
+      btn.style.background='var(--surface)';
+      btn.style.color='var(--text-primary)';
+    }
+    return btn;
+  }
+
+  var btn1=makeBtn('Download CSV & Start New',true);
+  var btn2=makeBtn('Start New Without Saving',false);
+  var btn3=makeBtn('Cancel',false);
+
+  function closeModal(){overlay.remove();}
+
+  btn1.addEventListener('click',function(){
+    exportCSV();
+    clearSheet();
+    closeModal();
+  });
+  btn2.addEventListener('click',function(){
+    clearSheet();
+    closeModal();
+  });
+  btn3.addEventListener('click',closeModal);
+
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closeModal();
+  });
+
+  function onEsc(e){
+    if(e.key==='Escape'){closeModal();document.removeEventListener('keydown',onEsc);}
+  }
+  document.addEventListener('keydown',onEsc);
+
+  btnWrap.appendChild(btn1);
+  btnWrap.appendChild(btn2);
+  btnWrap.appendChild(btn3);
+  box.appendChild(title);
+  box.appendChild(body);
+  box.appendChild(btnWrap);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
 }
 
 // ===== COLUMN RESIZE =====
@@ -1424,6 +1518,7 @@ function bindEvents(){
   document.getElementById('bg-color-picker').addEventListener('input',function(e){setBgColor(e.target.value)});
   document.getElementById('btn-undo').addEventListener('click',undo);
   document.getElementById('btn-redo').addEventListener('click',redo);
+  document.getElementById('btn-new').addEventListener('click',showNewSheetModal);
   document.getElementById('btn-import').addEventListener('click',function(){csvFileInput.click()});
   document.getElementById('btn-export').addEventListener('click',exportCSV);
 
